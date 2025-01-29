@@ -76,6 +76,9 @@ bash <(curl -sL get.autodarts.io)
 
 loginctl enable-linger
 
+sudo systemctl stop bluetooth
+sudo systemctl disable bluetooth
+
 rpi-connect signin
 rpi-connect on
 
