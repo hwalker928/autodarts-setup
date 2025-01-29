@@ -98,8 +98,8 @@ sudo systemctl stop bluetooth
 sudo systemctl disable bluetooth
 
 # Authenticate with rpi-connect
-rpi-connect signin
 rpi-connect on
+rpi-connect signin
 
 echo "Remaining tasks:"
 echo "1. Reboot the Raspberry Pi"
