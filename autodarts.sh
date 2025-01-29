@@ -8,6 +8,31 @@ if [ "$(whoami)" != "autodarts" ]; then
     exit 1
 fi
 
+if [ ! -d "assets" ]; then
+    echo "The assets folder does not exist. Please make sure it is present in the current directory."
+    exit 1
+fi
+
+if [ ! -d "configs" ]; then
+    echo "The configs folder does not exist. Please make sure it is present in the current directory."
+    exit 1
+fi
+
+if [ ! -d "scripts" ]; then
+    echo "The scripts folder does not exist. Please make sure it is present in the current directory."
+    exit 1
+fi
+
+if [ ! -f "/etc/lightdm/pi-greeter.conf" ]; then
+    echo "The file /etc/lightdm/pi-greeter.conf does not exist."
+    exit 1
+fi
+
+if [ ! -f "/usr/share/plymouth/themes/pix/splash.png" ]; then
+    echo "The file /usr/share/plymouth/themes/pix/splash.png does not exist."
+    exit 1
+fi
+
 # Update and upgrade the system
 sudo apt update
 sudo apt upgrade -y
@@ -40,6 +65,8 @@ sudo cp configs/pi-greeter.conf /etc/lightdm/pi-greeter.conf
 # Copy the scripts and set the permissions
 sudo cp -r scripts/ ~/.scripts/
 sudo chmod +x ~/.scripts/*.sh
+
+mkdir -p ~/.config/autostart
 
 # Copy the autodarts.desktop file to the autostart directory
 sudo cp configs/autodarts.desktop ~/.config/autostart/autodarts.desktop
