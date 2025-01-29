@@ -56,7 +56,7 @@ sudo cp -r assets/ ~/.assets/
 
 # Set the wallpaper
 echo "Setting the wallpaper"
-pcmanfm --set-wallpaper=~/.assets/wallpaper.jpg
+pcmanfm --set-wallpaper ~/.assets/wallpaper.jpg
 
 # Set the splash screen background
 echo "Setting the splash screen"
