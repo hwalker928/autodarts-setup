@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=AutoDarts
+Exec=/home/autodarts/.scripts/start-display.sh
+X-GNOME-Autostart-enabled=true

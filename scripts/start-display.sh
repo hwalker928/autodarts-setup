@@ -1,0 +1,1 @@
+chromium-browser https://play.autodarts.io --start-fullscreen --hide-crash-restore-bubble --noerrdialogs --disable-infobars --no-first-run --ozone-platform=wayland --enable-features=OverlayScrollbar --start-maximized
