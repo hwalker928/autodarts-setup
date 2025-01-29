@@ -17,6 +17,8 @@ sudo apt install curl rpi-connect -y
 
 sudo raspi-config nonint do_vnc 1
 
+sudo raspi-config nonint do_expand_rootfs
+
 # Copy the assets folder
 sudo cp -r assets/ ~/.assets/
 
