@@ -92,6 +92,12 @@ bash <(curl -sL get.autodarts.io)
 echo "Enabling linger for rpi-connect"
 loginctl enable-linger
 
+# Hide the trashcan from the desktop
+echo "Hiding desktop icons"
+sed -i 's/show_trash=1/show_trash=0/' ~/.config/pcmanfm/LXDE-pi/desktop-items-*.conf
+sed -i 's/show_mounts=1/show_mounts=0/' ~/.config/pcmanfm/LXDE-pi/desktop-items-*.conf
+sed -i 's/show_documents=1/show_documents=0/' ~/.config/pcmanfm/LXDE-pi/desktop-items-*.conf
+
 # Remove bluetooth since it's not needed
 echo "Disabling bluetooth"
 sudo systemctl stop bluetooth
