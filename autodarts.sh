@@ -34,51 +34,70 @@ if [ ! -f "/usr/share/plymouth/themes/pix/splash.png" ]; then
 fi
 
 # Update and upgrade the system
+echo "Upgrading packages"
 sudo apt update
 sudo apt upgrade -y
 
 # Install the necessary packages
+echo "Installing required packages"
 sudo apt install curl rpi-connect -y
 
 # Enable VNC Server
+echo "Enabling VNC Server"
 sudo raspi-config nonint do_vnc 1
 
 # Expand Root Filesystem
+echo "Expanding the filesystem"
 sudo raspi-config nonint do_expand_rootfs
 
 # Copy the assets folder
+echo "Copying assets folder"
 sudo cp -r assets/ ~/.assets/
 
 # Set the wallpaper
+echo "Setting the wallpaper"
 pcmanfm --set-wallpaper=~/.assets/wallpaper.jpg
 
 # Set the splash screen background
+echo "Setting the splash screen"
 sudo cp assets/splash.png /usr/share/plymouth/themes/pix/splash.png
 sudo plymouth-set-default-theme -R pix
 
 # Copy the autodarts logo to the Raspberry Pi artwork directory
+echo "Copying user logo"
 sudo cp assets/logo.png /usr/share/raspberrypi-artwork/autodarts_logo.png
 
 # Copy the login configuration file
+echo "Copying login configuration"
 sudo cp configs/pi-greeter.conf /etc/lightdm/pi-greeter.conf
 
 # Copy the scripts and set the permissions
+echo "Copying scripts"
 sudo cp -r scripts/ ~/.scripts/
 sudo chmod +x ~/.scripts/*.sh
 
+# Create the autostart folder
+echo "Creating autostart folder"
 mkdir -p ~/.config/autostart
 
 # Copy the autodarts.desktop file to the autostart directory
+echo "Copying autostart file"
 sudo cp configs/autodarts.desktop ~/.config/autostart/autodarts.desktop
 
 # Install AutoDarts service
+echo "Installing AutoDarts"
 bash <(curl -sL get.autodarts.io)
 
+# Enable linger to allow rpi-connect to function
+echo "Enabling linger for rpi-connect"
 loginctl enable-linger
 
+# Remove bluetooth since it's not needed
+echo "Disabling bluetooth"
 sudo systemctl stop bluetooth
 sudo systemctl disable bluetooth
 
+# Authenticate with rpi-connect
 rpi-connect signin
 rpi-connect on
 
