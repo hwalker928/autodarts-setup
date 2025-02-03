@@ -107,6 +107,9 @@ sudo systemctl disable bluetooth
 rpi-connect on
 rpi-connect signin
 
+# Add automatic shutdown at 5am
+echo "00 05 * * * root /sbin/shutdown -h now" | sudo tee -a /etc/crontab > /dev/null
+
 echo "Remaining tasks:"
 echo "1. Reboot the Raspberry Pi"
 echo "2. Disable Wastebasket and External Disks on the desktop"
