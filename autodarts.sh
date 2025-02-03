@@ -33,23 +33,23 @@ if [ ! -f "/usr/share/plymouth/themes/pix/splash.png" ]; then
     exit 1
 fi
 
-commands=("curl" "rpi-connect" "pcmanfm" "plymouth-set-default-theme" "loginctl" "sed" "rpi-connect")
-
-for cmd in "${commands[@]}"; do
-    if ! command -v $cmd &> /dev/null; then
-        echo "The command '$cmd' could not be found. Please install it before running this script."
-        exit 1
-    fi
-done
-
 # Update and upgrade the system
 echo "Upgrading packages"
 sudo apt update
 sudo apt upgrade -y
 
-# Install the necessary packages
-echo "Installing required packages"
-sudo apt install curl rpi-connect -y
+commands=("curl" "rpi-connect" "pcmanfm" "plymouth-set-default-theme" "loginctl" "sed" "rpi-connect")
+
+for cmd in "${commands[@]}"; do
+    if ! command -v $cmd &> /dev/null; then
+        echo "The command '$cmd' could not be found. Attempting to install it with apt-get."
+        sudo apt-get install -y $cmd
+        if ! command -v $cmd &> /dev/null; then
+            echo "The command '$cmd' could not be installed. Please install it manually before running this script."
+            exit 1
+        fi
+    fi
+done
 
 # Enable VNC Server
 echo "Enabling VNC Server"
