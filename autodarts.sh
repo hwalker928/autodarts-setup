@@ -125,6 +125,9 @@ echo "30 04 * * * root apt update && apt upgrade -y" | sudo tee -a /etc/crontab 
 # Set the boot behaviour to boot to desktop
 sudo raspi-config nonint do_boot_behaviour B4
 
+# Disable 4k60 video output
+sudo raspi-config nonint do_pi4video 1
+
 echo "Remaining tasks:"
 echo "1. Reboot the Raspberry Pi"
 echo "2. Set a static IP address"
