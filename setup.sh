@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# Confirmation screen
+echo "This script will download and set up AutoDarts."
+echo "Please ensure you have reset the OS before running this script."
+echo
+read -p "Do you wish to continue? (y/n): " -n 1 -r
+echo
+
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    echo "Setup aborted."
+    exit 1
+fi
+
 # Temporary directory
 TMP_DIR="/tmp/autodarts-setup-files"
 mkdir -p "$TMP_DIR"
