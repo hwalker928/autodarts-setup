@@ -38,7 +38,7 @@ echo "Upgrading packages"
 sudo apt update
 sudo apt upgrade -y
 
-commands=("curl" "rpi-connect" "pcmanfm" "plymouth-set-default-theme" "loginctl" "sed" "rpi-connect")
+commands=("curl" "rpi-connect" "pcmanfm" "plymouth-set-default-theme" "loginctl" "sed")
 
 for cmd in "${commands[@]}"; do
     if ! command -v $cmd &> /dev/null; then
