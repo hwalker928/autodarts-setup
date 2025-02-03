@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ 
 # Confirmation screen
 echo "This script will download and set up AutoDarts."
 echo "Please ensure you have reset the OS before running this script."
