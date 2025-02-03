@@ -14,7 +14,7 @@ then
 fi
 
 # Temporary directory
-TMP_DIR="/tmp/autodarts-setup-files"
+TMP_DIR="/tmp/autodarts-setup_$(date +%s)"
 mkdir -p "$TMP_DIR"
 
 # Download the ZIP file
@@ -34,3 +34,8 @@ cd "$EXTRACTED_DIR" || exit 1
 # Make autodarts.sh executable and run it
 chmod +x autodarts.sh
 ./autodarts.sh
+
+cd ~ || exit 1
+
+# Remove the temp directory
+rm -rf "$TMP_DIR"
