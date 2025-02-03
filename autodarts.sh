@@ -33,6 +33,15 @@ if [ ! -f "/usr/share/plymouth/themes/pix/splash.png" ]; then
     exit 1
 fi
 
+commands=("curl" "rpi-connect" "pcmanfm" "plymouth-set-default-theme" "loginctl" "sed" "rpi-connect")
+
+for cmd in "${commands[@]}"; do
+    if ! command -v $cmd &> /dev/null; then
+        echo "The command '$cmd' could not be found. Please install it before running this script."
+        exit 1
+    fi
+done
+
 # Update and upgrade the system
 echo "Upgrading packages"
 sudo apt update
@@ -109,6 +118,9 @@ rpi-connect signin
 
 # Add automatic shutdown at 5am
 echo "00 05 * * * root /sbin/shutdown -h now" | sudo tee -a /etc/crontab > /dev/null
+
+# Add automatic updates at 4:30am
+echo "30 04 * * * root apt update && apt upgrade -y" | sudo tee -a /etc/crontab > /dev/null
 
 echo "Remaining tasks:"
 echo "1. Reboot the Raspberry Pi"
