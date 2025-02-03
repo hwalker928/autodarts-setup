@@ -124,8 +124,7 @@ echo "30 04 * * * root apt update && apt upgrade -y" | sudo tee -a /etc/crontab 
 
 echo "Remaining tasks:"
 echo "1. Reboot the Raspberry Pi"
-echo "2. Disable Wastebasket and External Disks on the desktop"
-echo "3. Enable Desktop Autologin"
-echo "4. Set a static IP address"
-echo "5. Link the board to the account"
-echo "6. Configure the cameras"
+echo "2. Enable Desktop Autologin"
+echo "3. Set a static IP address"
+echo "4. Link the board to the account"
+echo "5. Configure the cameras"
