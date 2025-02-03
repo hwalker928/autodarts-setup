@@ -122,9 +122,11 @@ echo "00 05 * * * root /sbin/shutdown -h now" | sudo tee -a /etc/crontab > /dev/
 # Add automatic updates at 4:30am
 echo "30 04 * * * root apt update && apt upgrade -y" | sudo tee -a /etc/crontab > /dev/null
 
+# Set the boot behaviour to boot to desktop
+sudo raspi-config nonint do_boot_behaviour B4
+
 echo "Remaining tasks:"
 echo "1. Reboot the Raspberry Pi"
-echo "2. Enable Desktop Autologin"
-echo "3. Set a static IP address"
-echo "4. Link the board to the account"
-echo "5. Configure the cameras"
+echo "2. Set a static IP address"
+echo "3. Link the board to the account"
+echo "4. Configure the cameras"
