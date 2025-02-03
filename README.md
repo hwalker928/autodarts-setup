@@ -30,4 +30,5 @@ This script will:
 - Disable Bluetooth.
 - Authenticate with `rpi-connect`.
 - Schedule automatic shutdown and updates.
+- Enables automatic login to desktop.
 - Provide remaining manual tasks for the user.
